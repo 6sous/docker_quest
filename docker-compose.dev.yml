@@ -5,14 +5,21 @@ services:
       - 8080:3000
     command: npm start
     volumes:
-      - ./client/src/:/app/src/
+      - ./client/src/:/app/src/:rw
+    environment:
+      - WDS_SOCKET_HOST=127.0.0.1
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+
   server:
     build: ./server
     ports:
       - 5050:5000
     command: npm run dev
     volumes:
-      - ./server/src/:/app/src/
+      - ./server/src/:/app/src/:rw
+    environment:
+      - CHOKIDAR_USEPOLLING=true
   mongodb:
     image: mongo
     volumes:

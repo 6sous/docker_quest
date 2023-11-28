@@ -9,4 +9,4 @@ RUN npm install
 COPY src src
 COPY public public
 
-CMD npm run dev
+CMD npm start
